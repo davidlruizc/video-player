@@ -7,22 +7,34 @@ import android.widget.Toast;
 import android.widget.VideoView;
 
 public class VideoViewUtils {
-    public static final String URL_VIDEO_SAMPLE  = "https://raw.githubusercontent.com/o7planning/webexamples/master/_testdatas_/mov_bbb.mp4";
+
     public static final String LOG_TAG= "AndroidVideoView";
 
-    public static void playURLVideo(Context context, VideoView videoView, String videoURL)  {
+    public static void playRawVideo(Context context, VideoView videoView, String resName)  {
         try {
-            Log.i(LOG_TAG, "Video URL: "+ videoURL);
+            // ID of video file.
+            int id = VideoViewUtils.getRawResIdByName( context, resName);
 
-            Uri uri= Uri.parse( videoURL );
+            Uri uri = Uri.parse("android.resource://" + context.getPackageName() + "/" + id);
+            Log.i(LOG_TAG, "Video URI: "+ uri);
 
             videoView.setVideoURI(uri);
             videoView.requestFocus();
 
-        } catch(Exception e) {
-            Log.e(LOG_TAG, "Error Play URL Video: "+ e.getMessage());
-            Toast.makeText(context,"Error Play URL Video: "+ e.getMessage(),Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            Log.e(LOG_TAG, "Error Play Raw Video: "+e.getMessage());
+            Toast.makeText(context,"Error Play Raw Video: "+ e.getMessage(),Toast.LENGTH_SHORT).show();
             e.printStackTrace();
         }
+    }
+
+    // Find ID corresponding to the name of the resource (in the directory RAW).
+    public static int getRawResIdByName(Context context, String resName) {
+        String pkgName = context.getPackageName();
+        // Return 0 if not found.
+        int resID = context.getResources().getIdentifier(resName, "raw", pkgName);
+
+        Log.i(LOG_TAG, "Res Name: " + resName + "==> Res ID = " + resID);
+        return resID;
     }
 }

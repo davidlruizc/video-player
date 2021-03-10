@@ -58,9 +58,17 @@ public class FullVideo extends Activity {
             }
         });
 
-        // Play Vieo from URL
-        String videoURL = VideoViewUtils.URL_VIDEO_SAMPLE;
-        VideoViewUtils.playURLVideo(FullVideo.this, videoView, videoURL);
+        // Play Video from raw
+
+        // Get intent data
+        Intent i = getIntent();
+
+        int positionItent = i.getExtras().getInt("id");
+        ImageAdapter imageAdapter = new ImageAdapter(this);
+        //ImageView imageView = (ImageView) findViewById(R.id.full_image_view);
+        //imageView.setImageResource(imageAdapter.thumbImages[positionItent]);
+
+        VideoViewUtils.playRawVideo(FullVideo.this, videoView, imageAdapter.videoPath[positionItent]);
 
         this.buttonGoBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,12 +77,8 @@ public class FullVideo extends Activity {
             }
         });
 
-        // Get intent data
-        //Intent i = getIntent();
+
         // Get Selected Image Id
-        //int position = i.getExtras().getInt("id");
-        //ImageAdapter imageAdapter = new ImageAdapter(this);
-        //ImageView imageView = (ImageView) findViewById(R.id.full_image_view);
-        //imageView.setImageResource(imageAdapter.thumbImages[position]);
+
     }
 }
