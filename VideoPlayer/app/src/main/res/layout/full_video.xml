@@ -20,7 +20,7 @@ tools:context=".MainActivity">
         app:layout_constraintTop_toTopOf="parent">
         <VideoView
             android:id="@+id/videoView"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
     </FrameLayout>
@@ -41,6 +41,7 @@ tools:context=".MainActivity">
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
+
         <Button
             android:id="@+id/button_goBack"
             android:layout_width="379dp"
@@ -48,5 +49,30 @@ tools:context=".MainActivity">
             android:layout_weight="0"
             android:text="Volver a la lista" />
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp">
+
+        <TextView
+            android:id="@+id/titleArtist"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:text="TextView"
+            android:textStyle="bold"
+            android:textSize="24dp"
+            android:layout_marginBottom="20dp"/>
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

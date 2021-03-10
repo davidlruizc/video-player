@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.VideoView;
 import android.widget.MediaController;
 import android.media.MediaPlayer;
@@ -16,6 +16,7 @@ public class FullVideo extends Activity {
     private int position = 0;
     private MediaController mediaController;
     private Button buttonGoBack;
+    private TextView artist;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -24,6 +25,7 @@ public class FullVideo extends Activity {
 
         this.videoView = (VideoView) findViewById(R.id.videoView);
         this.buttonGoBack = (Button) findViewById(R.id.button_goBack);
+        this.artist = (TextView) findViewById(R.id.titleArtist);
 
         // Set the media controller buttons
         if (this.mediaController == null) {
@@ -58,17 +60,14 @@ public class FullVideo extends Activity {
             }
         });
 
-        // Play Video from raw
-
         // Get intent data
         Intent i = getIntent();
 
         int positionItent = i.getExtras().getInt("id");
         ImageAdapter imageAdapter = new ImageAdapter(this);
-        //ImageView imageView = (ImageView) findViewById(R.id.full_image_view);
-        //imageView.setImageResource(imageAdapter.thumbImages[positionItent]);
-
+        // Play Video from raw
         VideoViewUtils.playRawVideo(FullVideo.this, videoView, imageAdapter.videoPath[positionItent]);
+        this.artist.setText(imageAdapter.artistNames[positionItent]);
 
         this.buttonGoBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,9 +75,5 @@ public class FullVideo extends Activity {
                 finish();
             }
         });
-
-
-        // Get Selected Image Id
-
     }
 }

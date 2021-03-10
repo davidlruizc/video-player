@@ -28,6 +28,7 @@ public class ImageAdapter extends BaseAdapter {
         imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
         imageView.setPadding(20, 20, 20, 20);
         imageView.setImageResource(thumbImages[position]);
+
         return imageView;
     }
 
