@@ -52,7 +52,6 @@ public class FullVideo extends Activity {
                 mediaPlayer.setOnVideoSizeChangedListener(new MediaPlayer.OnVideoSizeChangedListener() {
                     @Override
                     public void onVideoSizeChanged(MediaPlayer mp, int width, int height) {
-
                         // Re-Set the videoView that acts as the anchor for the MediaController
                         mediaController.setAnchorView(videoView);
                     }
