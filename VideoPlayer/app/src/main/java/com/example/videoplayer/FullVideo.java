@@ -59,11 +59,11 @@ public class FullVideo extends Activity {
         VideoViewUtils.playURLVideo(FullVideo.this, videoView, videoURL);
 
         // Get intent data
-        Intent i = getIntent();
+        //Intent i = getIntent();
         // Get Selected Image Id
-        int position = i.getExtras().getInt("id");
-        ImageAdapter imageAdapter = new ImageAdapter(this);
-        ImageView imageView = (ImageView) findViewById(R.id.full_image_view);
-        imageView.setImageResource(imageAdapter.thumbImages[position]);
+        //int position = i.getExtras().getInt("id");
+        //ImageAdapter imageAdapter = new ImageAdapter(this);
+        //ImageView imageView = (ImageView) findViewById(R.id.full_image_view);
+        //imageView.setImageResource(imageAdapter.thumbImages[position]);
     }
 }
