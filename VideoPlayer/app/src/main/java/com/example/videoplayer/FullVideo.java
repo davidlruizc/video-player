@@ -3,6 +3,8 @@ package com.example.videoplayer;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.VideoView;
 import android.widget.MediaController;
@@ -13,6 +15,7 @@ public class FullVideo extends Activity {
     private VideoView videoView;
     private int position = 0;
     private MediaController mediaController;
+    private Button buttonGoBack;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -20,6 +23,7 @@ public class FullVideo extends Activity {
         setContentView(R.layout.full_video);
 
         this.videoView = (VideoView) findViewById(R.id.videoView);
+        this.buttonGoBack = (Button) findViewById(R.id.button_goBack);
 
         // Set the media controller buttons
         if (this.mediaController == null) {
@@ -57,6 +61,13 @@ public class FullVideo extends Activity {
         // Play Vieo from URL
         String videoURL = VideoViewUtils.URL_VIDEO_SAMPLE;
         VideoViewUtils.playURLVideo(FullVideo.this, videoView, videoURL);
+
+        this.buttonGoBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         // Get intent data
         //Intent i = getIntent();
